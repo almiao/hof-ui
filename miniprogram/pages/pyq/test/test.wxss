@@ -1,0 +1,15 @@
+/* pages/pyq/test/test.wxss */
+
+.rowItem {
+  display: inline-block;
+  width: 100rpx; 
+  height: 100rpx; 
+}
+.scroll-x{
+  white-space: nowrap;
+  height:160rpx; 
+  width:100%;
+  display: flex;
+  display: -webkit-box;
+  flex-direction: column;
+}

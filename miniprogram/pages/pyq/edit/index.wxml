@@ -1,0 +1,69 @@
+<view class='edit-header'>
+  <view class="container" wx:if="{{isShown}}" bindtap="close">
+    <view class="select-wrap">
+      <select id="select" options="{{menu}}" key="id" text="name" bind:change="change"></select>
+    </view>
+  </view>
+  <button class='header-delive' size="mini" bindtap="formSubmit">发布</button>
+</view>
+<view class="section">
+  <textarea class="textArea" bindblur="bindTextAreaBlur" auto-height placeholder="自动变高" />
+</view>
+
+<!-- <view class='tab-tip'>厨房-开工前</view>
+<view class='edit-main'>
+  <textarea class='edit-text' auto-height placeholder='制作美食的一天，从干净整洁的厨房开始' placeholder-style='color:#888' bindinput="getInputValue"></textarea>
+</view>
+
+<view class='tab-tip'>厨房-忙碌中</view>
+<view class='edit-main'>
+  <textarea class='edit-text' auto-height placeholder='快来分享忙碌中的厨房靓照吧' placeholder-style='color:#888' bindinput="getInputValue"></textarea>
+</view>
+
+<view class='tab-tip'>厨房-完工</view>
+<view class='edit-main'>
+  <textarea class='edit-text' auto-height placeholder='恭喜你，忙碌的一天终于收工啦，快来分享清洁完成后的厨房吧' placeholder-style='color:#888' bindinput="getInputValue"></textarea>
+</view> -->
+
+
+<view class="weui-cells">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <view class="weui-uploader">
+        <view class="weui-uploader__hd">
+          <view class="weui-uploader__overview">
+            <view class="weui-uploader__title">食材</view>
+            <view class="weui-uploader__info">{{files.length}}/9</view>
+          </view>
+          <view class="weui-uploader__tips" wx:if="{{files.length>0}}">
+            长按删除
+          </view>
+        </view>
+        <view class="weui-uploader__bd">
+          <scroll-view class="scroll-x" scroll-x="true" scroll-x>
+            <view wx:for="{{files}}" wx:key="index" class="rollItem">
+                  <image class="weui-uploader__img" src="{{item}}" mode="aspectFit" />
+            </view>
+          </scroll-view>
+          <view class="weui-uploader__input-box" wx:if="{{files.length<9}}">
+            <view class="weui-uploader__input" bindtap="chooseImage"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<van-button type="primary">按钮</van-button>
+<view class="abc">
+<view >{{currentDateStr}}</view>
+<view wx:if="showBuyDate">
+<van-datetime-picker
+                        type="date"
+                        value="{{ currentDate }}"
+                        min-date="{{ minDate }}"
+                        max-date="{{ maxDate }}"
+                        bind:input="onInput"
+                      />
+                    </view>
+                    </view>

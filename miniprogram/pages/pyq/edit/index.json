@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "select": "/components/select/select",
+    "van-button": "@vant/weapp/button/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index"
+  },
+  "navigationBarTitleText": "发布"
+}

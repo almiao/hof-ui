@@ -1,0 +1,36 @@
+
+<view class="weui-cells">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <view class="weui-uploader">
+        <view class="weui-uploader__hd">
+          <view class="weui-uploader__overview">
+            <view class="weui-uploader__title">食材</view>
+            <view class="weui-uploader__info">{{files.length}}/9</view>
+          </view>
+        </view>
+        <view class="weui-uploader__bd">
+          <view class="weui-uploader__input-box" wx:if="{{files.length<9}}">
+            <view class="weui-uploader__input" bindtap="chooseImage"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<scroll-view class="scroll-x" scroll-x="true" scroll-x>
+            <view wx:for="{{files}}" wx:key="index" class="rowItem">
+                  <image class=item-image" src="{{item}}" mode="aspectFill" />
+            </view>
+</scroll-view>
+
+<!-- <van-cell-group> -->
+<van-field
+  value="{{ message }}"
+
+  type="textarea"
+  placeholder="请输入留言"
+  autosize
+  border="{{ false }}"
+/>

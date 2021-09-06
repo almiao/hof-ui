@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/pyq/final/final",
+    "pages/pyq/test1/test1",
+    "pages/lunbo/lunbo",
+    "pages/pyq/test/test",
+
+    "pages/pyq/edit/index",
+
+    "pages/pyq/circle/index",
+    "pages/pyq/circle/detail",
+    "pages/code/web/index",
+    "pages/code/article/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "仲恺微校园",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 30000,
+    "uploadFile": 30000,
+    "downloadFile": 80000
+  },
+  "cloud": true,
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,61 @@
+<view class='edit-header'>
+  <view class="container" wx:if="{{isShown}}" bindtap="close">
+    <view class="select-wrap">
+      <select id="select" options="{{menu}}" key="id" text="name" bind:change="change"></select>
+    </view>
+  </view>
+  <button class='header-delive' size="mini" bindtap="formSubmit">发布</button>
+</view>
+
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab title=" 食材 ">
+    <van-button type="default" bindtap="chooseImage">默认按钮</van-button>
+    <view class='container'>
+    <scroll-view style="display:flex;width:100%" scroll-y>
+      <view class="container">
+        <swiper style="width:100%;height:360rpx;margin-top:50rpx;" bindchange="changeSwiper" previous-margin="90rpx" next-margin="90rpx">
+          <block wx:for="{{files}}" wx:key="index">
+            <swiper-item class="swiperItem">
+              <image mode="aspectFill" src='{{item}}' class="imageItem {{currentIndex == index ? 'active': ''}}"> </image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </scroll-view>
+  </view>
+
+  </van-tab>
+  <van-tab title=" 调料 ">调料</van-tab>
+  <van-tab title="食材加工"></van-tab>
+  <van-tab title=" 制作 ">制作</van-tab>
+  <van-tab title=" 成品 ">成品</van-tab>
+</van-tabs>
+
+<view>123456</view>
+<van-cell-group>
+  <van-field
+    value="{{ username }}"
+    required
+    clearable
+    label="名称"
+    icon="question-o"
+    placeholder="选择材料名称"
+    bind:click-icon="onClickIcon"
+  />
+
+  <van-field
+    value="{{ password }}"
+    type="password"
+    label="密码"
+    placeholder="请输入密码"
+    required
+    border="{{ false }}"
+  />
+</van-cell-group>
+
+<view>123456</view>
+
+
+
+
+
