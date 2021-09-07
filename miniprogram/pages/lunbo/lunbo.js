@@ -82,10 +82,5 @@ Page({
     this.setData({
       currentIndex: e.detail.current
     })
-  },
-  changeSwiper1: function (e) {
-    this.setData({
-      currentIndex1: e.detail.current
-    })
   }
 })

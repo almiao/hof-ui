@@ -8,7 +8,46 @@ Page({
     menu:[],
     isShown:false,
     fileList: [],
-    files:[]
+    matFiles:[],
+    matFileDetails:[],
+    spiFiles:[],
+    spiFileDetails:[],
+    segFiles:[],
+    setFileDetails:[],
+    cookFiles:[],
+    cookFileDetails:[],
+    finFiles:[],
+    finFileDetails:[],
+
+    curMatDate:'',
+    curMatName:'',
+    curMatUse:'',
+    curMatMark:'',
+    currentIndex:0,
+
+    spiDate:'',
+    spiName:'',
+    spiUse:'',
+    spiMark:'',
+    curSpiIndex:0,
+
+    segDate:'',
+    segName:'',
+    segUse:'',
+    segMark:'',
+    curSetIndex:0,
+
+    cookDate:'',
+    cookName:'',
+    cookUse:'',
+    cookMark:'',
+    curCookIndex:0,
+
+    finDate:'',
+    finName:'',
+    finUse:'',
+    finMark:'',
+    curFinIndex:0,
   },
 
   /**
@@ -25,9 +64,9 @@ Page({
             menu:res.data.dishes,
             isShown:true,
           })
-          console.log(res.data.dishes)
       }
     });
+
   },
 
   /**
@@ -97,21 +136,104 @@ Page({
     this.selectComponent('#select').close()
   },
 
-  chooseImage: function(e) {
+  chooseImage1: function(e) {
     var that = this;
     wx.chooseImage({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function(res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        that.setData({
-          files: that.data.files.concat(res.tempFilePaths)
+        var rFileDetails = new Array();
+        res.tempFilePaths.forEach(element => {
+          rFileDetails.push({curMatName:'',curMatDate:'',curMatUse:'',curMatMark:''})
         });
-        console.log("选择图片成功",that.files)
+        console.log("rFileDetails",rFileDetails)
+        that.setData({
+          matFiles: that.data.matFiles.concat(res.tempFilePaths),
+          matFileDetails:that.data.matFileDetails.concat(rFileDetails)
+        });
       }
     })
-
   },
+
+  chooseImage2: function(e) {
+    var that = this;
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function(res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var rFileDetails = new Array();
+        res.tempFilePaths.forEach(element => {
+          rFileDetails.push({spiName:'',spiDate:'',spiUse:'',spiMark:''})
+        });
+        console.log("rFileDetails",rFileDetails)
+        that.setData({
+          matFiles: that.data.spiFiles.concat(res.tempFilePaths),
+          matFileDetails:that.data.spiFileDetails.concat(rFileDetails)
+        });
+      }
+    })
+  },
+  chooseImage3: function(e) {
+    var that = this;
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function(res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var rFileDetails = new Array();
+        res.tempFilePaths.forEach(element => {
+          rFileDetails.push({segName:'',segDate:'',segUse:'',segMark:''})
+        });
+        console.log("rFileDetails",rFileDetails)
+        that.setData({
+          matFiles: that.data.segFiles.concat(res.tempFilePaths),
+          matFileDetails:that.data.setFileDetails.concat(rFileDetails)
+        });
+      }
+    })
+  },
+  chooseImage4: function(e) {
+    var that = this;
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function(res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var rFileDetails = new Array();
+        res.tempFilePaths.forEach(element => {
+          rFileDetails.push({cookName:'',cookDate:'',cookUse:'',cookMark:''})
+        });
+        console.log("rFileDetails",rFileDetails)
+        that.setData({
+          matFiles: that.data.cookFiles.concat(res.tempFilePaths),
+          matFileDetails:that.data.cookFileDetails.concat(rFileDetails)
+        });
+      }
+    })
+  },
+  chooseImage5: function(e) {
+    var that = this;
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function(res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var rFileDetails = new Array();
+        res.tempFilePaths.forEach(element => {
+          rFileDetails.push({finName:'',finDate:'',finUse:'',finMark:''})
+        });
+        console.log("rFileDetails",rFileDetails)
+        that.setData({
+          matFiles: that.data.finFiles.concat(res.tempFilePaths),
+          matFileDetails:that.data.finFileDetails.concat(rFileDetails)
+        });
+      }
+    })
+  },
+
+
   afterRead(event) {
     const that = this;
     const { file } = event.detail;
@@ -132,4 +254,80 @@ Page({
       }
     });
   },
+  changeSwiper2: function (e) {
+    const fileDetails = this.data.spiFileDetails;
+    const index = this.data.curSpiIndex;
+    fileDetails[index] = {spiName:this.data.spiName,spiDate:this.data.spiDate,spiMark:this.data.spiMark,curMatUse:this.data.curMatUse};
+    var detail = fileDetails[e.detail.current];
+    this.setData({
+      matFileDetails: fileDetails,
+      currentIndex: e.detail.current,
+      curMatName:detail.curMatName,
+      curMatDate:detail.curMatDate,
+      curMatMark:detail.curMatMark,
+      curMatUse:detail.curMatUse,
+    })
+    console.log(this.data);
+  },
+  changeSwiper3: function (e) {
+    const matFileDetails = this.data.matFileDetails;
+    const index = this.data.currentIndex;
+    matFileDetails[index] = {curMatName:this.data.curMatName,curMatDate:this.data.curMatDate,curMatMark:this.data.curMatMark,curMatUse:this.data.curMatUse};
+    var detail = matFileDetails[e.detail.current];
+    this.setData({
+      matFileDetails: matFileDetails,
+      currentIndex: e.detail.current,
+      curMatName:detail.curMatName,
+      curMatDate:detail.curMatDate,
+      curMatMark:detail.curMatMark,
+      curMatUse:detail.curMatUse,
+    })
+    console.log(this.data);
+  },
+  changeSwiper4: function (e) {
+    const matFileDetails = this.data.matFileDetails;
+    const index = this.data.currentIndex;
+    matFileDetails[index] = {curMatName:this.data.curMatName,curMatDate:this.data.curMatDate,curMatMark:this.data.curMatMark,curMatUse:this.data.curMatUse};
+    var detail = matFileDetails[e.detail.current];
+    this.setData({
+      matFileDetails: matFileDetails,
+      currentIndex: e.detail.current,
+      curMatName:detail.curMatName,
+      curMatDate:detail.curMatDate,
+      curMatMark:detail.curMatMark,
+      curMatUse:detail.curMatUse,
+    })
+    console.log(this.data);
+  },
+  changeSwiper5: function (e) {
+    const matFileDetails = this.data.matFileDetails;
+    const index = this.data.currentIndex;
+    matFileDetails[index] = {curMatName:this.data.curMatName,curMatDate:this.data.curMatDate,curMatMark:this.data.curMatMark,curMatUse:this.data.curMatUse};
+    var detail = matFileDetails[e.detail.current];
+    this.setData({
+      matFileDetails: matFileDetails,
+      currentIndex: e.detail.current,
+      curMatName:detail.curMatName,
+      curMatDate:detail.curMatDate,
+      curMatMark:detail.curMatMark,
+      curMatUse:detail.curMatUse,
+    })
+    console.log(this.data);
+  },
+  changeSwiper1: function (e) {
+    const matFileDetails = this.data.matFileDetails;
+    const index = this.data.currentIndex;
+    matFileDetails[index] = {curMatName:this.data.curMatName,curMatDate:this.data.curMatDate,curMatMark:this.data.curMatMark,curMatUse:this.data.curMatUse};
+    var detail = matFileDetails[e.detail.current];
+    this.setData({
+      matFileDetails: matFileDetails,
+      currentIndex: e.detail.current,
+      curMatName:detail.curMatName,
+      curMatDate:detail.curMatDate,
+      curMatMark:detail.curMatMark,
+      curMatUse:detail.curMatUse,
+    })
+    console.log(this.data);
+  }
+
 })

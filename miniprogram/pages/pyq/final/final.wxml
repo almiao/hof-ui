@@ -9,12 +9,12 @@
 
 <van-tabs active="{{ active }}" bind:change="onChange">
   <van-tab title=" 食材 ">
-    <van-button type="default" bindtap="chooseImage">默认按钮</van-button>
+    <van-button type="default" bindtap="chooseImage1">上传图片</van-button>
     <view class='container'>
     <scroll-view style="display:flex;width:100%" scroll-y>
       <view class="container">
-        <swiper style="width:100%;height:360rpx;margin-top:50rpx;" bindchange="changeSwiper" previous-margin="90rpx" next-margin="90rpx">
-          <block wx:for="{{files}}" wx:key="index">
+        <swiper style="width:100%;height:360rpx;margin-top:50rpx;" bindchange="changeSwiper1" previous-margin="90rpx" next-margin="90rpx">
+          <block wx:for="{{matFiles}}" wx:key="index">
             <swiper-item class="swiperItem">
               <image mode="aspectFill" src='{{item}}' class="imageItem {{currentIndex == index ? 'active': ''}}"> </image>
             </swiper-item>
@@ -22,38 +22,111 @@
         </swiper>
       </view>
     </scroll-view>
-  </view>
+    </view>
+  </van-tab>
+  <van-tab title=" 调料 ">
+
+      <van-button type="default" bindtap="chooseImage2">上传图片</van-button>
+      <view class='container'>
+        <scroll-view style="display:flex;width:100%" scroll-y>
+          <view class="container">
+            <swiper style="width:100%;height:360rpx;margin-top:50rpx;" bindchange="changeSwiper2" previous-margin="90rpx" next-margin="90rpx">
+              <block wx:for="{{matFiles}}" wx:key="index">
+                <swiper-item class="swiperItem">
+                  <image mode="aspectFill" src='{{item}}' class="imageItem {{currentIndex == index ? 'active': ''}}"> </image>
+                </swiper-item>
+              </block>
+            </swiper>
+          </view>
+        </scroll-view>
+      </view>
 
   </van-tab>
-  <van-tab title=" 调料 ">调料</van-tab>
-  <van-tab title="食材加工"></van-tab>
-  <van-tab title=" 制作 ">制作</van-tab>
-  <van-tab title=" 成品 ">成品</van-tab>
+  <van-tab title="食材加工">
+
+      <van-button type="default" bindtap="chooseImage3">上传图片</van-button>
+      <view class='container'>
+        <scroll-view style="display:flex;width:100%" scroll-y>
+          <view class="container">
+            <swiper style="width:100%;height:360rpx;margin-top:50rpx;" bindchange="changeSwiper3" previous-margin="90rpx" next-margin="90rpx">
+              <block wx:for="{{matFiles}}" wx:key="index">
+                <swiper-item class="swiperItem">
+                  <image mode="aspectFill" src='{{item}}' class="imageItem {{currentIndex == index ? 'active': ''}}"> </image>
+                </swiper-item>
+              </block>
+            </swiper>
+          </view>
+        </scroll-view>
+      </view>
+  </van-tab>
+  <van-tab title=" 制作 ">
+      <van-button type="default" bindtap="chooseImage4">上传图片</van-button>
+      <view class='container'>
+        <scroll-view style="display:flex;width:100%" scroll-y>
+          <view class="container">
+            <swiper style="width:100%;height:360rpx;margin-top:50rpx;" bindchange="changeSwiper4" previous-margin="90rpx" next-margin="90rpx">
+              <block wx:for="{{matFiles}}" wx:key="index">
+                <swiper-item class="swiperItem">
+                  <image mode="aspectFill" src='{{item}}' class="imageItem {{currentIndex == index ? 'active': ''}}"> </image>
+                </swiper-item>
+              </block>
+            </swiper>
+          </view>
+        </scroll-view>
+      </view>
+  </van-tab>
+  <van-tab title=" 成品 ">
+      <van-button type="default" bindtap="chooseImage5">上传图片</van-button>
+      <view class='container'>
+        <scroll-view style="display:flex;width:100%" scroll-y>
+          <view class="container">
+            <swiper style="width:100%;height:360rpx;margin-top:50rpx;" bindchange="changeSwiper5" previous-margin="90rpx" next-margin="90rpx">
+              <block wx:for="{{matFiles}}" wx:key="index">
+                <swiper-item class="swiperItem">
+                  <image mode="aspectFill" src='{{item}}' class="imageItem {{currentIndex == index ? 'active': ''}}"> </image>
+                </swiper-item>
+              </block>
+            </swiper>
+          </view>
+        </scroll-view>
+      </view>
+  </van-tab>
 </van-tabs>
 
-<view>123456</view>
-<van-cell-group>
-  <van-field
-    value="{{ username }}"
-    required
-    clearable
-    label="名称"
-    icon="question-o"
-    placeholder="选择材料名称"
-    bind:click-icon="onClickIcon"
-  />
+<van-cell-group wx:if="{{matFiles.length>0}}">
 
-  <van-field
-    value="{{ password }}"
-    type="password"
-    label="密码"
-    placeholder="请输入密码"
-    required
-    border="{{ false }}"
-  />
+                <van-field
+                   model:value="{{ curMatName }}"
+                  required
+                  clearable
+                  label="食材名称"
+                  icon="question-o"
+                  placeholder="选择材料名称"
+                />
+                <van-field
+                model:value="{{ curMatDate }}"
+                  label="购买日期"
+                  placeholder="请输入食材购买日期"
+                  required
+                  border="{{ false }}"
+                />
+
+                <van-field
+                model:value="{{ curMatUse }}"
+                  label="用量"
+                  placeholder="请输入用量"
+                  border="{{ false }}"
+                />
+                <van-field
+                model:value="{{ curMatMark }}"
+                    label="描述"
+                    placeholder="添加任意的描述吧"
+                    border="{{ false }}"
+                />
 </van-cell-group>
 
-<view>123456</view>
+
+
 
 
 
