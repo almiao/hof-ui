@@ -59,7 +59,7 @@ Page({
       url:"https://www.tangle.ink:9200/menu/list/my?userId=1",
       method:"GET",
       success: function(res) {
-          //这样直接赋值并不会把数据渲染到页面上的    不过 0.9版本的时候这样做是可以的  
+          //这样直接赋值并不会把数据渲染到页面上的    不过 0.9版本的时候这样做是可以的
           that.setData({
             menu:res.data.dishes,
             isShown:true,
@@ -257,52 +257,49 @@ Page({
   changeSwiper2: function (e) {
     const fileDetails = this.data.spiFileDetails;
     const index = this.data.curSpiIndex;
-    fileDetails[index] = {spiName:this.data.spiName,spiDate:this.data.spiDate,spiMark:this.data.spiMark,curMatUse:this.data.curMatUse};
+    fileDetails[index] = {spiName:this.data.spiName,spiDate:this.data.spiDate,spiMark:this.data.spiMark,spiUse:this.data.spiUse};
     var detail = fileDetails[e.detail.current];
     this.setData({
-      matFileDetails: fileDetails,
-      currentIndex: e.detail.current,
-      curMatName:detail.curMatName,
-      curMatDate:detail.curMatDate,
-      curMatMark:detail.curMatMark,
-      curMatUse:detail.curMatUse,
+      spiFileDetails: fileDetails,
+      curSpiIndex: e.detail.current,
+      spiName:detail.spiName,
+      spiDate:detail.spiDate,
+      spiMark:detail.spiMark,
+      spiUse:detail.spiUse,
     })
-    console.log(this.data);
   },
   changeSwiper3: function (e) {
-    const matFileDetails = this.data.matFileDetails;
-    const index = this.data.currentIndex;
-    matFileDetails[index] = {curMatName:this.data.curMatName,curMatDate:this.data.curMatDate,curMatMark:this.data.curMatMark,curMatUse:this.data.curMatUse};
-    var detail = matFileDetails[e.detail.current];
+    const fileDetails = this.data.segFileDetails;
+    const index = this.data.curSegIndex;
+    fileDetails[index] = {segName:this.data.segName,segDate:this.data.segDate,segMark:this.data.segMark,segUse:this.data.segUse};
+    var detail = fileDetails[e.detail.current];
     this.setData({
-      matFileDetails: matFileDetails,
-      currentIndex: e.detail.current,
-      curMatName:detail.curMatName,
-      curMatDate:detail.curMatDate,
-      curMatMark:detail.curMatMark,
-      curMatUse:detail.curMatUse,
+      segFileDetails: fileDetails,
+      curSegIndex: e.detail.current,
+      segName:detail.segName,
+      segDate:detail.segDate,
+      segMark:detail.segMark,
+      segUse:detail.segUse,
     })
-    console.log(this.data);
   },
   changeSwiper4: function (e) {
-    const matFileDetails = this.data.matFileDetails;
-    const index = this.data.currentIndex;
-    matFileDetails[index] = {curMatName:this.data.curMatName,curMatDate:this.data.curMatDate,curMatMark:this.data.curMatMark,curMatUse:this.data.curMatUse};
-    var detail = matFileDetails[e.detail.current];
+    const fileDetails = this.data.cookFileDetails;
+    const index = this.data.curCookIndex;
+    fileDetails[index] = {cookName:this.data.cookName,cookDate:this.data.cookDate,cookMark:this.data.cookMark,cookUse:this.data.cookUse};
+    var detail = fileDetails[e.detail.current];
     this.setData({
-      matFileDetails: matFileDetails,
+      cookFileDetails: fileDetails,
       currentIndex: e.detail.current,
-      curMatName:detail.curMatName,
-      curMatDate:detail.curMatDate,
-      curMatMark:detail.curMatMark,
-      curMatUse:detail.curMatUse,
+      cookName:detail.cookName,
+      cookDate:detail.cookDate,
+      cookMark:detail.cookMark,
+      cookUse:detail.cookUse,
     })
-    console.log(this.data);
   },
   changeSwiper5: function (e) {
-    const matFileDetails = this.data.matFileDetails;
-    const index = this.data.currentIndex;
-    matFileDetails[index] = {curMatName:this.data.curMatName,curMatDate:this.data.curMatDate,curMatMark:this.data.curMatMark,curMatUse:this.data.curMatUse};
+    const fileDetails = this.data.finFileDetails;
+    const index = this.data.curFinIndex;
+    fileDetails[index] = {curMatName:this.data.curMatName,curMatDate:this.data.curMatDate,curMatMark:this.data.curMatMark,curMatUse:this.data.curMatUse};
     var detail = matFileDetails[e.detail.current];
     this.setData({
       matFileDetails: matFileDetails,
@@ -328,6 +325,11 @@ Page({
       curMatUse:detail.curMatUse,
     })
     console.log(this.data);
+  },
+
+  publish: function (e) {
+
+
   }
 
 })
