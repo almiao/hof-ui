@@ -35,7 +35,7 @@ Page({
     segName:'',
     segUse:'',
     segMark:'',
-    curSetIndex:0,
+    curSegIndex:0,
 
     cookDate:'',
     cookName:'',
@@ -48,6 +48,9 @@ Page({
     finUse:'',
     finMark:'',
     curFinIndex:0,
+
+    active:0,
+
   },
 
   /**
@@ -119,8 +122,6 @@ Page({
   },
 
   change (e) {
-    let that = this;
-    console.log(that.data.menu),
     this.setData({
       selected: { ...e.detail }
     })
@@ -147,7 +148,7 @@ Page({
         res.tempFilePaths.forEach(element => {
           rFileDetails.push({curMatName:'',curMatDate:'',curMatUse:'',curMatMark:''})
         });
-        console.log("rFileDetails",rFileDetails)
+        console.log("chooseImage1",rFileDetails)
         that.setData({
           matFiles: that.data.matFiles.concat(res.tempFilePaths),
           matFileDetails:that.data.matFileDetails.concat(rFileDetails)
@@ -167,10 +168,10 @@ Page({
         res.tempFilePaths.forEach(element => {
           rFileDetails.push({spiName:'',spiDate:'',spiUse:'',spiMark:''})
         });
-        console.log("rFileDetails",rFileDetails)
+        console.log("chooseImage2",rFileDetails)
         that.setData({
-          matFiles: that.data.spiFiles.concat(res.tempFilePaths),
-          matFileDetails:that.data.spiFileDetails.concat(rFileDetails)
+          spiFiles: that.data.spiFiles.concat(res.tempFilePaths),
+          spiFileDetails:that.data.spiFileDetails.concat(rFileDetails)
         });
       }
     })
@@ -186,10 +187,10 @@ Page({
         res.tempFilePaths.forEach(element => {
           rFileDetails.push({segName:'',segDate:'',segUse:'',segMark:''})
         });
-        console.log("rFileDetails",rFileDetails)
+        console.log("chooseImage3",rFileDetails)
         that.setData({
-          matFiles: that.data.segFiles.concat(res.tempFilePaths),
-          matFileDetails:that.data.setFileDetails.concat(rFileDetails)
+          segFiles: that.data.segFiles.concat(res.tempFilePaths),
+          segFileDetails:that.data.setFileDetails.concat(rFileDetails)
         });
       }
     })
@@ -205,10 +206,10 @@ Page({
         res.tempFilePaths.forEach(element => {
           rFileDetails.push({cookName:'',cookDate:'',cookUse:'',cookMark:''})
         });
-        console.log("rFileDetails",rFileDetails)
+        console.log("chooseImage4",rFileDetails)
         that.setData({
-          matFiles: that.data.cookFiles.concat(res.tempFilePaths),
-          matFileDetails:that.data.cookFileDetails.concat(rFileDetails)
+          cookFiles: that.data.cookFiles.concat(res.tempFilePaths),
+          cookFileDetails:that.data.cookFileDetails.concat(rFileDetails)
         });
       }
     })
@@ -224,10 +225,10 @@ Page({
         res.tempFilePaths.forEach(element => {
           rFileDetails.push({finName:'',finDate:'',finUse:'',finMark:''})
         });
-        console.log("rFileDetails",rFileDetails)
+        console.log("chooseImage5",rFileDetails)
         that.setData({
-          matFiles: that.data.finFiles.concat(res.tempFilePaths),
-          matFileDetails:that.data.finFileDetails.concat(rFileDetails)
+          finFiles: that.data.finFiles.concat(res.tempFilePaths),
+          finFileDetails:that.data.finFileDetails.concat(rFileDetails)
         });
       }
     })
@@ -273,6 +274,7 @@ Page({
     const index = this.data.curSegIndex;
     fileDetails[index] = {segName:this.data.segName,segDate:this.data.segDate,segMark:this.data.segMark,segUse:this.data.segUse};
     var detail = fileDetails[e.detail.current];
+    console.log("seg",this.data)
     this.setData({
       segFileDetails: fileDetails,
       curSegIndex: e.detail.current,
@@ -281,6 +283,7 @@ Page({
       segMark:detail.segMark,
       segUse:detail.segUse,
     })
+    console.log("seg",this.data)
   },
   changeSwiper4: function (e) {
     const fileDetails = this.data.cookFileDetails;
@@ -289,7 +292,7 @@ Page({
     var detail = fileDetails[e.detail.current];
     this.setData({
       cookFileDetails: fileDetails,
-      currentIndex: e.detail.current,
+      curCookIndex: e.detail.current,
       cookName:detail.cookName,
       cookDate:detail.cookDate,
       cookMark:detail.cookMark,
@@ -299,15 +302,15 @@ Page({
   changeSwiper5: function (e) {
     const fileDetails = this.data.finFileDetails;
     const index = this.data.curFinIndex;
-    fileDetails[index] = {curMatName:this.data.curMatName,curMatDate:this.data.curMatDate,curMatMark:this.data.curMatMark,curMatUse:this.data.curMatUse};
-    var detail = matFileDetails[e.detail.current];
+    fileDetails[index] = {finName:this.data.finName,finDate:this.data.finDate,finMark:this.data.finMark,finUse:this.data.finUse};
+    var detail = fileDetails[e.detail.current];
     this.setData({
-      matFileDetails: matFileDetails,
-      currentIndex: e.detail.current,
-      curMatName:detail.curMatName,
-      curMatDate:detail.curMatDate,
-      curMatMark:detail.curMatMark,
-      curMatUse:detail.curMatUse,
+      finFileDetails: fileDetails,
+      curFinIndex: e.detail.current,
+      finName:detail.finName,
+      finDate:detail.finDate,
+      finMark:detail.finMark,
+      finUse:detail.finUse,
     })
     console.log(this.data);
   },
@@ -327,7 +330,19 @@ Page({
     console.log(this.data);
   },
 
+
+  onTabChange: function(e){
+
+    console.log(e);
+    this.setData({
+      active: e.detail.name
+    })
+    console.log(this.data)
+
+  },
+
   publish: function (e) {
+
 
 
   }

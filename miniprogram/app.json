@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/pyq/dish/dish",
     "pages/pyq/final/final",
     "pages/pyq/test1/test1",
     "pages/lunbo/lunbo",

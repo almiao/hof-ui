@@ -63,8 +63,6 @@ Component({
         current: Object.assign({}, this.data.defaultOption),
         result: result
       })
-      console.log("here1")
-      console.log(this.data.result)
     }
   }
 })

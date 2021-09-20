@@ -7,8 +7,9 @@
   <button class='header-delive' size="mini" bindtap="formSubmit">发布</button>
 </view>
 
-<van-tabs active="{{ active }}" bind:change="onChange">
+<van-tabs active="{{ active }}" bind:change="onTabChange">
   <van-tab title=" 食材 ">
+  <view wx:if="{{active===0}}">
     <van-button type="default" bindtap="chooseImage1">上传图片</van-button>
     <view class='container'>
     <scroll-view style="display:flex;width:100%" scroll-y>
@@ -23,15 +24,16 @@
       </view>
     </scroll-view>
     </view>
+  </view>
   </van-tab>
   <van-tab title=" 调料 ">
-
+    <view wx:if="{{active===1}}">
       <van-button type="default" bindtap="chooseImage2">上传图片</van-button>
       <view class='container'>
         <scroll-view style="display:flex;width:100%" scroll-y>
           <view class="container">
             <swiper style="width:100%;height:360rpx;margin-top:50rpx;" bindchange="changeSwiper2" previous-margin="90rpx" next-margin="90rpx">
-              <block wx:for="{{matFiles}}" wx:key="index">
+              <block wx:for="{{spiFiles}}" wx:key="index">
                 <swiper-item class="swiperItem">
                   <image mode="aspectFill" src='{{item}}' class="imageItem {{currentIndex == index ? 'active': ''}}"> </image>
                 </swiper-item>
@@ -40,16 +42,16 @@
           </view>
         </scroll-view>
       </view>
-
+      </view>
   </van-tab>
   <van-tab title="食材加工">
-
+    <view wx:if="{{active===2}}">
       <van-button type="default" bindtap="chooseImage3">上传图片</van-button>
       <view class='container'>
         <scroll-view style="display:flex;width:100%" scroll-y>
           <view class="container">
             <swiper style="width:100%;height:360rpx;margin-top:50rpx;" bindchange="changeSwiper3" previous-margin="90rpx" next-margin="90rpx">
-              <block wx:for="{{matFiles}}" wx:key="index">
+              <block wx:for="{{segFiles}}" wx:key="index">
                 <swiper-item class="swiperItem">
                   <image mode="aspectFill" src='{{item}}' class="imageItem {{currentIndex == index ? 'active': ''}}"> </image>
                 </swiper-item>
@@ -58,14 +60,16 @@
           </view>
         </scroll-view>
       </view>
+    </view>
   </van-tab>
   <van-tab title=" 制作 ">
+    <view wx:if="{{active===3}}">
       <van-button type="default" bindtap="chooseImage4">上传图片</van-button>
       <view class='container'>
         <scroll-view style="display:flex;width:100%" scroll-y>
           <view class="container">
             <swiper style="width:100%;height:360rpx;margin-top:50rpx;" bindchange="changeSwiper4" previous-margin="90rpx" next-margin="90rpx">
-              <block wx:for="{{matFiles}}" wx:key="index">
+              <block wx:for="{{cookFiles}}" wx:key="index">
                 <swiper-item class="swiperItem">
                   <image mode="aspectFill" src='{{item}}' class="imageItem {{currentIndex == index ? 'active': ''}}"> </image>
                 </swiper-item>
@@ -74,14 +78,16 @@
           </view>
         </scroll-view>
       </view>
+      </view>
   </van-tab>
   <van-tab title=" 成品 ">
+    <view wx:if="{{active===4}}">
       <van-button type="default" bindtap="chooseImage5">上传图片</van-button>
       <view class='container'>
         <scroll-view style="display:flex;width:100%" scroll-y>
           <view class="container">
             <swiper style="width:100%;height:360rpx;margin-top:50rpx;" bindchange="changeSwiper5" previous-margin="90rpx" next-margin="90rpx">
-              <block wx:for="{{matFiles}}" wx:key="index">
+              <block wx:for="{{finFiles}}" wx:key="index">
                 <swiper-item class="swiperItem">
                   <image mode="aspectFill" src='{{item}}' class="imageItem {{currentIndex == index ? 'active': ''}}"> </image>
                 </swiper-item>
@@ -90,39 +96,169 @@
           </view>
         </scroll-view>
       </view>
+    </view>
   </van-tab>
 </van-tabs>
 
-<van-cell-group wx:if="{{matFiles.length>0}}">
 
-                <van-field
-                   model:value="{{ curMatName }}"
-                  required
-                  clearable
-                  label="食材名称"
-                  icon="question-o"
-                  placeholder="选择材料名称"
-                />
-                <van-field
-                model:value="{{ curMatDate }}"
-                  label="购买日期"
-                  placeholder="请输入食材购买日期"
-                  required
-                  border="{{ false }}"
-                />
+<van-cell-group wx:if="{{active===0 && matFiles.length>0}}">
 
-                <van-field
-                model:value="{{ curMatUse }}"
-                  label="用量"
-                  placeholder="请输入用量"
-                  border="{{ false }}"
-                />
-                <van-field
-                model:value="{{ curMatMark }}"
-                    label="描述"
-                    placeholder="添加任意的描述吧"
-                    border="{{ false }}"
-                />
+<van-field
+   model:value="{{ curMatName }}"
+  required
+  clearable
+  label="食材名称"
+  icon="question-o"
+  placeholder="选择材料名称"
+/>
+<van-field
+model:value="{{ curMatDate }}"
+  label="购买日期"
+  placeholder="请输入食材购买日期"
+  required
+  border="{{ false }}"
+/>
+
+<van-field
+model:value="{{ curMatUse }}"
+  label="用量"
+  placeholder="请输入用量"
+  border="{{ false }}"
+/>
+<van-field
+model:value="{{ curMatMark }}"
+    label="描述"
+    placeholder="添加任意的描述吧"
+    border="{{ false }}"
+/>
+</van-cell-group>
+
+
+<van-cell-group wx:if="{{active === 1 && spiFiles.length>0}}">
+
+<van-field
+   model:value="{{ spiName }}"
+  required
+  clearable
+  label="食材名称"
+  icon="question-o"
+  placeholder="选择材料名称"
+/>
+<van-field
+model:value="{{ spiDate }}"
+  label="购买日期"
+  placeholder="请输入食材购买日期"
+  required
+  border="{{ false }}"
+/>
+
+<van-field
+model:value="{{ spiUse }}"
+  label="用量"
+  placeholder="请输入用量"
+  border="{{ false }}"
+/>
+<van-field
+model:value="{{ spiMark }}"
+    label="描述"
+    placeholder="添加任意的描述吧"
+    border="{{ false }}"
+/>
+</van-cell-group>
+
+
+<van-cell-group wx:if="{{active === 2 && segFiles.length>0}}">
+
+<van-field
+   model:value="{{ segName }}"
+  required
+  clearable
+  label="食材名称"
+  icon="question-o"
+  placeholder="选择材料名称"
+/>
+<van-field
+model:value="{{ segDate }}"
+  label="购买日期"
+  placeholder="请输入食材购买日期"
+  required
+  border="{{ false }}"
+/>
+
+<van-field
+model:value="{{ segUse }}"
+  label="用量"
+  placeholder="请输入用量"
+  border="{{ false }}"
+/>
+<van-field
+model:value="{{ segMark }}"
+    label="描述"
+    placeholder="添加任意的描述吧"
+    border="{{ false }}"
+/>
+</van-cell-group>
+<van-cell-group wx:if="{{active ===3 &&  cookFiles.length>0}}">
+
+<van-field
+   model:value="{{ cookName }}"
+  required
+  clearable
+  label="食材名称"
+  icon="question-o"
+  placeholder="选择材料名称"
+/>
+<van-field
+model:value="{{ cookDate }}"
+  label="购买日期"
+  placeholder="请输入食材购买日期"
+  required
+  border="{{ false }}"
+/>
+
+<van-field
+model:value="{{ cookUse }}"
+  label="用量"
+  placeholder="请输入用量"
+  border="{{ false }}"
+/>
+<van-field
+model:value="{{ cookMark }}"
+    label="描述"
+    placeholder="添加任意的描述吧"
+    border="{{ false }}"
+/>
+</van-cell-group>
+<van-cell-group wx:if="{{active ===4 &&  finFiles.length>0}}">
+
+<van-field
+   model:value="{{ finName }}"
+  required
+  clearable
+  label="食材名称"
+  icon="question-o"
+  placeholder="选择材料名称"
+/>
+<van-field
+model:value="{{ finDate }}"
+  label="购买日期"
+  placeholder="请输入食材购买日期"
+  required
+  border="{{ false }}"
+/>
+
+<van-field
+model:value="{{ finUse }}"
+  label="用量"
+  placeholder="请输入用量"
+  border="{{ false }}"
+/>
+<van-field
+model:value="{{ finMark }}"
+    label="描述"
+    placeholder="添加任意的描述吧"
+    border="{{ false }}"
+/>
 </van-cell-group>
 
 

@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": true,
     "postcss": true,
@@ -31,7 +31,7 @@
       "outputPath": ""
     },
     "enableEngineNative": false,
-    "useIsolateContext": true,
+    "useIsolateContext": false,
     "userConfirmedBundleSwitch": false,
     "packNpmManually": true,
     "packNpmRelationList": [
@@ -46,7 +46,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.9.3",
   "appid": "wxb5f9e8f98cb1c90f",
-  "projectname": "zhku_app",
+  "projectname": "hof_ui",
   "debugOptions": {
     "hidedInDevtools": []
   },

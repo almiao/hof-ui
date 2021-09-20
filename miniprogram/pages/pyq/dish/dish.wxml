@@ -1,0 +1,5 @@
+<!--pages/pyq/dish/dish.wxml-->
+<text>pages/pyq/dish/dish.wxml</text>
+
+
+<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}"  />
