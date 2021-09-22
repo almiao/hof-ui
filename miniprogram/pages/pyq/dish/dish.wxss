@@ -1,1 +1,152 @@
 /* pages/pyq/dish/dish.wxss */
+
+/* pages/edit/edit.wxss */
+/* 
+.container {
+    display: flex;
+    justify-content: center;
+    margin-left: 40rpx;
+    margin-right: 40rpx;
+  } */
+
+
+  
+.mainImgContainer{
+    height: 480rpx;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+}
+
+.imgContainer image { 
+    width:700rpx;
+    max-height: 400rpx;
+}
+
+.imgContainer .box { 
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.imgContainer .file{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.file .weui-uploader__file{
+    float:none;
+    width: 90%;
+    margin-right: none;
+}
+
+.mainImgTitle{             
+    display: flex;
+    background-color: brown;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 80rpx;
+    /* height: 200rpx; */ 
+}   
+.chooser{
+    /* margin-top: 8px; */
+    display: flex;
+    justify-content: center;
+    /* justify-content: flex-end; */
+    /* align-items: ; */
+}
+.imgContainer{
+    height: 400rpx;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 200rpx 0; */ 
+    box-sizing: border-box;
+} 
+
+.add{
+    display: inline-block;
+    line-height: 30px;
+    padding: 0 12px;
+    background: skyblue;
+}
+.box{
+    margin-top: 10px;
+    clear: both;
+    overflow: hidden;
+    padding: 0 15px;
+}
+.item{
+    display: flex;
+    flex-direction: row;
+}
+
+.b-ipt{
+    overflow: hidden;
+    border: 1px solid #ccc;
+    width: 40%;
+}
+.del{
+    margin-left: 10rpx;
+}
+
+.plusMaterial{
+    float: right;
+    margin-right: 20rpx;
+    margin-top: 10rpx;
+}
+
+.stepBox{
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    width: 100%;
+}
+.stepBox .stepTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.stepTitle .step{
+    margin-left:40rpx
+}
+
+.stepImg{
+    width: 100%;
+    height: 450rpx;
+    display: flex;
+    /* 从最下面开始布局 */
+    align-items: center; 
+    justify-content: center;
+    /* margin: 50rpx; */
+    position:relative;
+}
+
+.stepTitle .deleteStep{
+    margin-right: 40rpx;
+}
+.stepImg .weui-uploader__input-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80rpx;
+    height: 80rpx;
+    align-items: center;
+    position: absolute;
+}
+
+.stepImg .swiperImg{
+    width:95%;height:400rpx;background-color:darkgray;
+}
+
+.mainText{
+    font-size: small;
+    font: outline;
+    justify-content: center;
+}

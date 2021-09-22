@@ -1,5 +1,84 @@
-<!--pages/pyq/dish/dish.wxml-->
-<text>pages/pyq/dish/dish.wxml</text>
+
+<view class="mainImgContainer">
+    <view class="imgContainer">
+        <view class="box" wx:if="{{mainFile === null}}">
+            <view class="weui-uploader__input-box" >
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+            </view>
+            <text class="mainText">
+                选择菜品好看的封面图片吧。长按图片可删除以重新选择。
+            </text>
+        </view>
+        <view class="file" wx:if="{{mainFile != null}}">
+            <view class="weui-uploader__file" bindlongtap="deleteImg">
+                <image class="img" src="{{mainFile}}" mode="aspectFill" />
+            </view>
+        </view>
+    </view>
+</view>
+
+<view>
+    <view class='add'>食材</view>
+    <view class="plusMaterial">
+    <van-icon name="plus" size="25px" bindtap="addInput" />
+    </view>
+</view>
+<view class='box' wx:for='{{array}}' wx:key='index'>
+    <view class="item">
+        <input type='text' class='b-ipt' placeholder='食材名' data-idx='{{index}}' value='{{inputVal[index].name}}' bindinput='getNameVal'/>
+        <input type='text' class='b-ipt' placeholder='用量' data-idx='{{index}}' value='{{inputVal[index].use}}' bindinput='getUseVal'/>
+        <view class='del' bindtap='delInput' data-idx='{{index}}'>删除</view>
+    </view>
+</view>
 
 
-<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}"  />
+<view style="margin-top: 20rpx;">
+    <view class='add' >调料</view>
+    <view class="plusMaterial">
+    <van-icon name="plus" size="25px" bindtap="addSpiInput" />
+    </view>
+</view>
+<view class='box' wx:for='{{spiArray}}' wx:key='index'>
+    <view class="item">
+        <input type='text' class='b-ipt' placeholder='食材名' data-idx='{{index}}' value='{{spiInputVal[index].name}}' bindinput='getSpiNameVal'/>
+        <input type='text' class='b-ipt' placeholder='用量' data-idx='{{index}}' value='{{spiInputVal[index].use}}' bindinput='getSpiUseVal'/>
+        <view class='del' bindtap='delSpiInput' data-idx='{{index}}'>删除</view>
+    </view>
+</view>
+
+<view style="margin-top: 20rpx;">
+    <view class='add' >步骤</view>
+    <view class="plusMaterial">
+    <van-icon name="plus" size="25px" bindtap="addStepInput" />
+    </view>
+</view>
+<view class='stepBox' wx:for='{{stepArray}}' wx:key='index'>
+    <view class="stepTitle">
+        <view class="step">步骤：{{index+1}}</view>
+        <view class="deleteStep">
+            <van-icon name="minus" size="25px" bindtap="delStepInput" />
+        </view>
+    </view>
+    <view class="stepImg">
+        <swiper class="swiperImg" bindchange="changeSwiper2" previous-margin="30rpx" next-margin="30rpx">
+                <block wx:for="{{stepInputVal[index].files}}" wx:key="index">
+                    <swiper-item class="swiperItem">
+                    <image mode="aspectFill" src='{{item}}' class="imageItem {{currentIndex == index ? 'active': ''}}"> </image>
+                    </swiper-item>
+                </block>
+        </swiper>
+        <view class="weui-uploader__input-box" >
+            <view class="weui-uploader__input" data-idx='{{index}}' bindtap="chooseStepImage"></view>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_active">
+            <view class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder-class="weui-input__placeholder" placeholder="请输入文本" style="height: 3.3em" />
+            </view>
+        </view>
+    </view> 
+
+</view>
+
+

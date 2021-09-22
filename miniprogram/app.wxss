@@ -80,7 +80,7 @@ page {
 .weui-uploader__title {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
-  flex: 1;
+  flex: 0.3;
 }
 
 .weui-uploader__tips {
@@ -137,12 +137,12 @@ page {
 }
 
 .weui-uploader__input-box {
-  float: left;
+  float: middle;
   position: relative;
   margin-right: 8px;
   margin-bottom: 8px;
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   box-sizing: border-box;
   background-color: #ededed;
 }
@@ -182,7 +182,7 @@ page {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
+  opacity: 0.5;
 }
 
 /**<--顶部图片样式-->**/

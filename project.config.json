@@ -4,55 +4,46 @@
         "ignore": []
     },
     "setting": {
-        "urlCheck": false,
-        "es6": true,
-        "enhance": true,
-        "postcss": true,
-        "preloadBackgroundData": false,
-        "minified": true,
-        "newFeature": true,
-        "coverView": true,
-        "nodeModules": false,
-        "autoAudits": false,
-        "showShadowRootInWxmlPanel": true,
+        "bundle": false,
+        "userConfirmedBundleSwitch": false,
+        "urlCheck": true,
         "scopeDataCheck": false,
-        "uglifyFileName": false,
-        "checkInvalidKey": true,
-        "checkSiteMap": true,
-        "uploadWithSourceMap": true,
+        "coverView": true,
+        "es6": true,
+        "postcss": true,
         "compileHotReLoad": false,
         "lazyloadPlaceholderEnable": false,
+        "preloadBackgroundData": false,
+        "minified": true,
+        "autoAudits": false,
+        "newFeature": false,
+        "uglifyFileName": false,
+        "uploadWithSourceMap": true,
+        "useIsolateContext": true,
+        "nodeModules": false,
+        "enhance": true,
         "useMultiFrameRuntime": false,
         "useApiHook": false,
         "useApiHostProcess": false,
-        "babelSetting": {
-            "ignore": [],
-            "disablePlugins": [],
-            "outputPath": ""
-        },
+        "showShadowRootInWxmlPanel": true,
+        "packNpmManually": false,
         "enableEngineNative": false,
-        "useIsolateContext": true,
-        "userConfirmedBundleSwitch": false,
-        "packNpmManually": true,
-        "packNpmRelationList": [
-            {
-                "packageJsonPath": "./package.json",
-                "miniprogramNpmDistDir": "./miniprogram/"
-            }
-        ],
+        "packNpmRelationList": [],
         "minifyWXSS": true,
         "showES6CompileOption": false
     },
     "compileType": "miniprogram",
-    "libVersion": "2.9.3",
     "appid": "touristappid",
-    "projectname": "hof_ui",
+    "projectname": "miniprogram-2",
     "debugOptions": {
         "hidedInDevtools": []
     },
+    "scripts": {},
+    "staticServerOptions": {
+        "baseURL": "",
+        "servePath": ""
+    },
     "isGameTourist": false,
-    "simulatorType": "wechat",
-    "simulatorPluginLibVersion": {},
     "condition": {
         "search": {
             "list": []
@@ -61,7 +52,12 @@
             "list": []
         },
         "game": {
-            "currentL": -1,
+            "list": []
+        },
+        "plugin": {
+            "list": []
+        },
+        "gamePlugin": {
             "list": []
         },
         "miniprogram": {

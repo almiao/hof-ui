@@ -5,9 +5,7 @@
     "pages/pyq/test1/test1",
     "pages/lunbo/lunbo",
     "pages/pyq/test/test",
-
     "pages/pyq/edit/index",
-
     "pages/pyq/circle/index",
     "pages/pyq/circle/detail",
     "pages/code/web/index",
@@ -16,7 +14,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "仲恺微校园",
+    "navigationBarTitleText": "hof-ui",
     "navigationBarTextStyle": "black"
   },
   "networkTimeout": {
